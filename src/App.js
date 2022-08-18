@@ -17,7 +17,12 @@ class App extends React.Component {
   // function for nav bar to change state and thus which inputs are rendered
   navState(e) {
     const nombre = e.target.parentElement.className;
-    this.setState({navigator: nombre});
+    this.setState({
+      navigator: nombre,
+      data: {
+        
+      },
+    });
   }
 
   render() {
@@ -38,7 +43,7 @@ class App extends React.Component {
 
             <DataEntry section={this.state.navigator}/>
           </div>
-          <Preview/>
+          <Preview data={this.state.data}/>
         </div>
 
         <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>

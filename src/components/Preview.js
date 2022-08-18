@@ -1,7 +1,8 @@
 import React from 'react';
 
-function Preview() {
-  
+function Preview(props) {
+  console.log(props);
+
   return (
     <div className="dataEntry">
       <h2>Header Name</h2>

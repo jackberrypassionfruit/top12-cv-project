@@ -77,10 +77,10 @@ function error() {
 
 function DataEntry(props) {
   switch (props.section) {
-    case "config": return config(); break;
-    case "info": return info(); break;
-    case "exp": return exp(); break;
-    case "edu": return edu(); break;
+    case "config": return config();
+    case "info": return info();
+    case "exp": return exp();
+    case "edu": return edu();
     default: return error();
   }
 }

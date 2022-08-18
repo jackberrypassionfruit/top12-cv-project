@@ -2,7 +2,6 @@ import './App.css';
 import React from 'react';
 import Preview from './components/Preview';
 import DataEntry from './components/DataEntry'
-import { jsPDF } from 'jspdf';
 // https://github.com/parallax/jsPDF
 
 
@@ -10,7 +9,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {navigator: "instruct"};
+    this.state = {navigator: "config"};
 
     this.navState = this.navState.bind(this);
   }
@@ -25,14 +24,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <header>
-          <p>CV Builder</p>
+          <h1>CV Builder</h1>
         </header>
 
         <div className="body">
           <div className="editor">
-            <div>I'm back bitches!</div>
-            <ul>
-              <li className="instruct"> <a onClick={this.navState}>Instructions</a> </li>
+            <ul className='nav'>
+              <li className="config"> <a onClick={this.navState}>Config/Publish</a> </li>
               <li className="info"> <a onClick={this.navState}>Personal Information</a> </li>
               <li className="exp"> <a onClick={this.navState}>Experience</a> </li>
               <li className="edu"> <a onClick={this.navState}>Education</a> </li>

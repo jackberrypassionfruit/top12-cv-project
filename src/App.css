@@ -1,3 +1,9 @@
+:root {
+  --page-width: 30rem;
+  --page-height: calc(30rem * 11 / 8.5);
+  --border-radius: .3rem;
+}
+
 .App {
   text-align: center;
 }
@@ -37,6 +43,23 @@
   }
 }
 
+.App > header {
+  background-color:rgb(41, 41, 41);
+  margin: 0 0 2rem 0;
+}
+
+.App h1 {
+  padding: 1rem;;
+  margin: 0;
+  color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+}
+
 .body {
   display: flex;
   flex-flow: row wrap;
@@ -44,11 +67,21 @@
   text-align: left;
 }
 
+.body > * {
+  width: var(--page-width);
+  height: fit-content;
+  margin: 1rem;
+  box-shadow: 0 0 10px rgb(155, 155, 155);
+  border-radius: var(--border-radius);
+  background-color: rgb(220, 220, 220);
+}
+
 ul {
   margin: 0;
   padding: .5rem;;
   background-color:rgb(41, 41, 41);
   list-style-type: none;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
 li {
@@ -68,6 +101,48 @@ li a:hover {
   background-color: rgb(80, 80, 80)
 }
 
-input {
+form, .form {
+  padding: .3rem;
+}
+
+form *, .publish * {
   display: block;
+  margin: .2rem;
+}
+
+.dataEntry {
+  border-radius: var(--border-radius);
+  height: var(--page-height);
+}
+
+.dataEntry > h2 {
+  background-color: rgb(80, 80, 80);
+  margin: 0;
+  padding: 1rem;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.dataFlex {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: calc(100% - 4rem);
+}
+
+.dataFlex .left {
+  width: 60%;
+}
+
+.dataFlex > .right {
+  background-color:aliceblue;
+  width: 30%;
+}
+
+.dataFlex .left, .dataFlex .right {
+  padding: .5rem;
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid rgb(94, 94, 94);
 }

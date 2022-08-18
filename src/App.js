@@ -46,6 +46,7 @@ class App extends React.Component {
     }
 
     this.navState = this.navState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // function for nav bar to change state and thus which inputs are rendered

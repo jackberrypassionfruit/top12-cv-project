@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Preview(props) {
-  console.log(props);
+  // console.log(props);
 
   return (
     <div className="dataEntry">
-      <h2>Header Name</h2>
+      <h2>{props.data.info.firstName}</h2>
       <div className="dataFlex">
         <div className="left">
           <div className="About Me">

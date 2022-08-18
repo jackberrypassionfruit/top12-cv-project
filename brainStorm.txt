@@ -1,0 +1,39 @@
+CV Application
+
+Should Include:
+1) A section to add general information like name, email, phone number.
+
+2) A section to add your educational experience (school name, title of study, date of study)
+
+3) A section to add practical experience (company name, position title, main tasks of your jobs, date from and until when you worked for that company)
+
+- Needs to be wisely componeted
+- 
+
+
+Design Decisions (what do people want?)
+
+- I like Michal Oslam's Design
+  what I like about it:
+    1) Shows updates in real time
+    2) gives a sense of design style from very beginning, informing decisions
+    3) Not a lot is changing at any one time
+
+  what I can improve about it:
+    1) Hone in on one section at a time
+    2) Choice in design
+      - Light, dark?
+      -
+    
+
+My Details:
+1) 2 panels
+2) Left panel: Editor
+  - A navbar will reveal each section one at a time
+3) Right panel: Preview
+  - Updates in real time
+  - Each section highlighted with L-nav, if not obvious already
+4) Under Editor panel, finishing buttons:
+  I) [Stretch] Generate PDF
+  II) Populate editor/preview with example information
+  III) Reset all

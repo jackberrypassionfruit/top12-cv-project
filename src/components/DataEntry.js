@@ -20,7 +20,6 @@ function config() {
           <button>Show Example CV</button>
           <button>Reset Current</button>
         </div>
-        <div className="config"></div>
       </div>
     </div>
   )

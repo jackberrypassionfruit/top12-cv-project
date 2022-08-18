@@ -115,6 +115,7 @@ form *, .publish * {
   height: var(--page-height);
 }
 
+
 .dataEntry > h2 {
   background-color: rgb(80, 80, 80);
   margin: 0;

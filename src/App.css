@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  text-align: left;
+}
+
+ul {
+  margin: 0;
+  padding: .5rem;;
+  background-color:rgb(41, 41, 41);
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  background-color: gray;
+  text-decoration: none;
+  margin: .2rem;
+  padding: .2rem;
+  color: black;
+  cursor: pointer;
+}
+
+li a:hover {
+  background-color: rgb(80, 80, 80)
+}
+
+input {
+  display: block;
+}

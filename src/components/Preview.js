@@ -8,7 +8,7 @@ class Preview extends React.Component {
 
   render() {
     return (
-      <p>I'm back bitches!</p>
+      <div>Help me bitches!</div>
     )
   }
 }

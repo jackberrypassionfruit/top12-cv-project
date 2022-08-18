@@ -8,7 +8,6 @@ Should Include:
 3) A section to add practical experience (company name, position title, main tasks of your jobs, date from and until when you worked for that company)
 
 - Needs to be wisely componeted
-- 
 
 
 Design Decisions (what do people want?)
@@ -23,13 +22,13 @@ Design Decisions (what do people want?)
     1) Hone in on one section at a time
     2) Choice in design
       - Light, dark?
-      -
     
 
 My Details:
 1) 2 panels
 2) Left panel: Editor
   - A navbar will reveal each section one at a time
+  - Initially (and optionally later), that section will be used to show instructions
 3) Right panel: Preview
   - Updates in real time
   - Each section highlighted with L-nav, if not obvious already

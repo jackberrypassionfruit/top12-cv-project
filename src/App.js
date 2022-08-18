@@ -58,6 +58,14 @@ class App extends React.Component {
     document.querySelector('.dataEntry').querySelector(`.${nombre}`).removeAttribute('hidden');
   }
 
+  handleChange(e) {
+    const inputField = e.target;
+    this.setState((state, props) => {
+      state.data.info[inputField.id] = inputField.value;
+      return state;
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -91,7 +99,7 @@ class App extends React.Component {
               </div>
               <div className="inputs info" hidden>
                 <h3>Personal Information</h3>
-                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="First Name" id='firstName' onChange={this.handleChange}/>
                 <input type="text" placeholder="Last Name" />
                 <label htmlFor="photo">Photo</label>
                 <input type="file" id='photo' />

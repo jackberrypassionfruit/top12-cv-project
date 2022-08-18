@@ -36,3 +36,11 @@ My Details:
   I) [Stretch] Generate PDF
   II) Populate editor/preview with example information
   III) Reset all
+
+
+
+
+  Todo
+  - Implement logic to change state with every single input change
+      - Stright from last reading, shouldn't be too bad
+  - Then maybe implement multiple listings, but that seems harder

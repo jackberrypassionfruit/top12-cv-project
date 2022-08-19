@@ -110,13 +110,13 @@ form *, .publish * {
   margin: .2rem;
 }
 
-.dataEntry {
+.preview {
   border-radius: var(--border-radius);
   height: var(--page-height);
 }
 
 
-.dataEntry > h2 {
+.preview > h2 {
   background-color: rgb(80, 80, 80);
   margin: 0;
   padding: 1rem;
@@ -141,6 +141,11 @@ form *, .publish * {
 
 .dataFlex .left, .dataFlex .right {
   padding: .5rem;
+}
+
+.right > img {
+  height: 10rem;
+  width: auto;
 }
 
 hr {

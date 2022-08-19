@@ -1,10 +1,11 @@
 import React from 'react';
+import facePic from '../assets/empty_avatar.cedf234c.png'
 
 function Preview(props) {
   // console.log(props);
 
   return (
-    <div className="dataEntry">
+    <div className="preview">
       <h2>{props.data.info.firstName}</h2>
       <div className="dataFlex">
         <div className="left">
@@ -22,7 +23,7 @@ function Preview(props) {
           </div>
         </div>
         <div className="right">
-          <img src="../../assets/empty_avatar.cedf234c.png" alt="Someone's head" />
+          <img src={facePic} alt="Someone's head" id='facePic' />
           <h5>Personal Details</h5>
           <hr />
           <h6>Address</h6>

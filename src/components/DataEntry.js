@@ -1,12 +1,11 @@
 import React from 'react';
 
 class DataEntry extends React.Component {
-
   constructor(props) {
     super(props);
   }
 
-  config(props) {
+  config() {
     return (
       <div className="form">
         <h3>Instructions</h3>
@@ -81,7 +80,6 @@ class DataEntry extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     switch (this.props.section) {
       case "config": return this.config();
       case "info": return this.info();

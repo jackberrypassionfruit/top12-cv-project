@@ -41,31 +41,13 @@ class App extends React.Component {
 
     }
 
+    this.handleChange = this.handleChange.bind(this);
     this.navState = this.navState.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
   }
-
-  // function for nav bar to change state and thus which inputs are rendered
-  // navState(e) {
-  //   const nombre = e.target.parentElement.className;
-  //   const dataEntries = document.querySelectorAll('.inputs');
-  //   for (const dataEntry of dataEntries) {
-  //     dataEntry.setAttribute('hidden', true)
-  //   }
-  //   document.querySelector('.dataEntry').querySelector(`.${nombre}`).removeAttribute('hidden');
-  // }
 
   navState(e) {
     this.setState({navigator: e.target.className})
   }
-
-  // handleChange(e) {
-  //   const inputField = e.target;
-  //   this.setState((state, props) => {
-  //     state.data.info[inputField.id] = inputField.value;
-  //     return state;
-  //   })
-  // }
 
   handleChange(e) {
     const data = this.state.data;
@@ -75,8 +57,6 @@ class App extends React.Component {
   }
 
   render() {
-    // let componentRef = useRef();
-
     return (
       <div className="App">
         <header>
@@ -92,7 +72,7 @@ class App extends React.Component {
               <li className="edu" onClick={this.navState}> Education </li>
             </ul>
 
-            <DataEntry section={this.state.navigator}/>
+            <DataEntry handleChange={this.handleChange} section={this.state.navigator}/>
             {/* <div className="dataEntry">
               <div className="inputs config">
                 <h3>Instructions</h3>
@@ -137,7 +117,7 @@ class App extends React.Component {
               </div>
             </div> */}
           </div>
-          <Preview handleChange={this.handleChange} data={this.state.data}/>
+          <Preview data={this.state.data}/>
         </div>
 
         <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>

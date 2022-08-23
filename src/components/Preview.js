@@ -6,7 +6,7 @@ function Preview(props) {
 
   return (
     <div className="preview">
-      <h2>{props.data.info.firstName}</h2>
+      <h2>{props.data.firstName}</h2>
       <div className="dataFlex">
         <div className="left">
           <div className="About Me">

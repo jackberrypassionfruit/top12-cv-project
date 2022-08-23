@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
 import Preview from './components/Preview';
-// import DataEntry from './components/DataEntry'
-// https://github.com/parallax/jsPDF
+import DataEntry from './components/DataEntry';
 
+// import ReactToPrint from 'react-to-print';
 
 class App extends React.Component {
 
@@ -11,11 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       navigator: "config",
-      data: {
-        info: {},
-        experience: {},
-        education: {},
-      },
+      data: {},
     };
 
     this.examples = {
@@ -46,28 +42,41 @@ class App extends React.Component {
     }
 
     this.navState = this.navState.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   // function for nav bar to change state and thus which inputs are rendered
+  // navState(e) {
+  //   const nombre = e.target.parentElement.className;
+  //   const dataEntries = document.querySelectorAll('.inputs');
+  //   for (const dataEntry of dataEntries) {
+  //     dataEntry.setAttribute('hidden', true)
+  //   }
+  //   document.querySelector('.dataEntry').querySelector(`.${nombre}`).removeAttribute('hidden');
+  // }
+
   navState(e) {
-    const nombre = e.target.parentElement.className;
-    const dataEntries = document.querySelectorAll('.inputs');
-    for (const dataEntry of dataEntries) {
-      dataEntry.setAttribute('hidden', true)
-    }
-    document.querySelector('.dataEntry').querySelector(`.${nombre}`).removeAttribute('hidden');
+    this.setState({navigator: e.target.className})
   }
 
+  // handleChange(e) {
+  //   const inputField = e.target;
+  //   this.setState((state, props) => {
+  //     state.data.info[inputField.id] = inputField.value;
+  //     return state;
+  //   })
+  // }
+
   handleChange(e) {
-    const inputField = e.target;
-    this.setState((state, props) => {
-      state.data.info[inputField.id] = inputField.value;
-      return state;
-    })
+    const data = this.state.data;
+    data[e.target.id] = e.target.value;
+    console.log(e.target.value);
+    this.setState(data);
   }
 
   render() {
+    // let componentRef = useRef();
+
     return (
       <div className="App">
         <header>
@@ -77,13 +86,14 @@ class App extends React.Component {
         <div className="body">
           <div className="editor">
             <ul className='nav'>
-              <li className="config"> <a onClick={this.navState}>Config/Publish</a> </li>
-              <li className="info"> <a onClick={this.navState}>Personal Information</a> </li>
-              <li className="exp"> <a onClick={this.navState}>Experience</a> </li>
-              <li className="edu"> <a onClick={this.navState}>Education</a> </li>
+              <li className="config" onClick={this.navState}> Config/Publish </li>
+              <li className="info" onClick={this.navState}> Personal Information </li>
+              <li className="exp" onClick={this.navState}> Experience </li>
+              <li className="edu" onClick={this.navState}> Education </li>
             </ul>
 
-            <div className="dataEntry">
+            <DataEntry section={this.state.navigator}/>
+            {/* <div className="dataEntry">
               <div className="inputs config">
                 <h3>Instructions</h3>
                 <br />
@@ -125,9 +135,9 @@ class App extends React.Component {
                 <input type="date" placeholder="From" />
                 <input type="date" placeholder="To" />
               </div>
-            </div>
+            </div> */}
           </div>
-          <Preview data={this.state.data}/>
+          <Preview handleChange={this.handleChange} data={this.state.data}/>
         </div>
 
         <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>

@@ -86,9 +86,6 @@ footer {
 
 .nav > li {
   display: inline;
-}
-
-.nav > li> a {
   background-color: gray;
   text-decoration: none;
   margin: .2rem;

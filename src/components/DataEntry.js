@@ -1,11 +1,7 @@
 import React from 'react';
 
-class DataEntry extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  config() {
+function DataEntry(props) {
+  function config() {
     return (
       <div className="form">
         <h3>Instructions</h3>
@@ -30,11 +26,11 @@ class DataEntry extends React.Component {
     )
   }
 
-  info() {
+  function info() {
     return (
       <form>
         <h3>Personal Information</h3>
-        <input type="text" placeholder="First Name" id="firstName" onChange={this.props.handleChange} />
+        <input type="text" placeholder="First Name" id="firstName" onChange={props.handleChange} />
         <input type="text" placeholder="Last Name" />
         <input type="text" placeholder="Title" />
         <label htmlFor="photo">Photo</label>
@@ -47,7 +43,7 @@ class DataEntry extends React.Component {
     )
   }
 
-  exp() {
+  function exp() {
     return(
       <form>
         <h3>Experience</h3>
@@ -61,7 +57,7 @@ class DataEntry extends React.Component {
     )
   }
 
-  edu() {
+  function edu() {
     return (
       <form>
         <h3>Education</h3>
@@ -75,18 +71,16 @@ class DataEntry extends React.Component {
     )
   }
 
-  error() {
+  function error() {
     return <div>Something went wrong</div>
   }
 
-  render() {
-    switch (this.props.section) {
-      case "config": return this.config();
-      case "info": return this.info();
-      case "exp": return this.exp();
-      case "edu": return this.edu();
-      default: return this.error();
-    }
+  switch (props.section) {
+    case "config": return config();
+    case "info": return info();
+    case "exp": return exp();
+    case "edu": return edu();
+    default: return error();
   }
 }
 

@@ -2,11 +2,10 @@ import React from 'react';
 import facePic from '../assets/empty_avatar.cedf234c.png'
 
 function Preview(props) {
-  // console.log(props);
 
   return (
     <div className="preview">
-      <h2>{props.data.firstName}</h2>
+      <h2>{ props.data.firstName }</h2>
       <div className="dataFlex">
         <div className="left">
           <div className="About Me">

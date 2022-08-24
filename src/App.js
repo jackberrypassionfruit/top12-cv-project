@@ -15,15 +15,20 @@ function App() {
   }
 
   function handleChange(e) {
+    console.log(data);
     const newData = data;
     newData[e.target.id] = e.target.value;
-    setData(newData);
+    console.log(data, newData)
+
+    const id = e.target.id;
+    const value = e.target.value;
+    setData({...data, id : { value } });
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, []
-  );
+  // }, []
+  // );
 
   return (
     <div className="App">

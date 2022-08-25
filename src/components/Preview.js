@@ -1,9 +1,9 @@
 import React from 'react';
 import facePic from '../assets/empty_avatar.cedf234c.png'
 
-function Preview(props) {
+export const Preview = React.forwardRef((props, ref) => {
   return (
-    <div className="preview">
+    <div ref={ref} className="preview">
       <div className='fullName'>
         <h2>{ props.data.firstname }-</h2>
         <h2>{ props.data.lastname }</h2>
@@ -44,6 +44,6 @@ function Preview(props) {
       </div>
     </div>
   )
-}
+})
 
 export default Preview

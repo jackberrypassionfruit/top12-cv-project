@@ -15,7 +15,7 @@ function DataEntry(props) {
         <div className="controls">
           <div className="publish">
             <h3>Publish</h3>
-            <button>Generate PDF</button>
+            <button onClick={props.handlePrint}>Generate PDF</button>
             <button>Show Example CV</button>
             <button>Reset Current</button>
           </div>

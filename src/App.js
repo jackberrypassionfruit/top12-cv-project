@@ -1,14 +1,36 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Preview from './components/Preview';
 import DataEntry from './components/DataEntry';
 
-// import ReactToPrint from 'react-to-print';
+import { useReactToPrint } from 'react-to-print';
 
 function App() {
 
+  const examples = {
+      firstName: '',
+      lastName: '',
+      title: '',
+      address: '',
+      phoneNum: '',
+      email: '',
+      description: '',
+      position: '',
+      company: '',
+      city: '',
+      from: '',
+      to: '',
+      university: '',
+      uniCity: '',
+      degree: '',
+      uniFrom: '',
+      uniTo: '',
+  }
+
   const [navigator, setNavigator] = useState("config");
   const [data, setData] = useState({});
+
+  // Prop Functions
 
   function navState(e) {
     setNavigator(e.target.className)
@@ -28,6 +50,9 @@ function App() {
     photoDestination.src = photoURL;
   }
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({content: () => componentRef.current });
+
   return (
     <div className="App">
       <header>
@@ -42,9 +67,9 @@ function App() {
             <li className="exp" onClick={navState}> Experience </li>
             <li className="edu" onClick={navState}> Education </li>
           </ul>
-          <DataEntry handleChange={handleChange} handlePhoto={handlePhoto} section={navigator} data={data} />
+          <DataEntry handleChange={handleChange} handlePhoto={handlePhoto} handlePrint={handlePrint} section={navigator} data={data} />
         </div>
-        <Preview data={data} />
+        <Preview data={data} ref={componentRef} />
       </div>
 
       <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>

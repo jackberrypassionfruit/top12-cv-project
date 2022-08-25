@@ -16,8 +16,8 @@ function DataEntry(props) {
           <div className="publish">
             <h3>Publish</h3>
             <button onClick={props.handlePrint}>Generate PDF</button>
-            <button>Show Example CV</button>
-            <button>Reset Current</button>
+            <button onClick={props.showExampleCV}>Show Example CV</button>
+            <button onClick={props.resetCV}>Reset Current</button>
           </div>
         </div>
       </div>
@@ -31,16 +31,16 @@ function DataEntry(props) {
         <input 
           type="text" 
           placeholder="First Name" 
-          id="firstname" 
+          id="firstName" 
           onChange={props.handleChange}
-          value={props.data.firstname || ""}
+          value={props.data.firstName || ""}
           />
         <input 
           type="text" 
           placeholder="Last Name"
-          id="lastname" 
+          id="lastName" 
           onChange={props.handleChange} 
-          value={props.data.lastname || ""}
+          value={props.data.lastName || ""}
           />
         <input 
           type="text" 

@@ -1,6 +1,6 @@
 :root {
-  --page-width: 30rem;
-  --page-height: calc(30rem * 11 / 8.5);
+  --page-width: 40rem;
+  --page-height: calc(40rem * 11 / 8.5);
   --border-radius: .3rem;
 }
 

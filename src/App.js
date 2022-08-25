@@ -8,23 +8,23 @@ import { useReactToPrint } from 'react-to-print';
 function App() {
 
   const examples = {
-      firstName: '',
-      lastName: '',
-      title: '',
-      address: '',
-      phoneNum: '',
-      email: '',
-      description: '',
-      position: '',
-      company: '',
-      city: '',
-      from: '',
-      to: '',
-      university: '',
-      uniCity: '',
-      degree: '',
-      uniFrom: '',
-      uniTo: '',
+      firstName: 'Jack',
+      lastName: 'Pashayan',
+      title: 'Teacher',
+      address: '82 Ossipee St',
+      pnum: '123-456-7890',
+      email: 'usGov@google.com',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut faucibus semper libero ut ornare. Ut id mi viverra leo tristique blandit sed a sem. Fusce auctor velit non iaculis accumsan. Curabitur nec purus vel lorem aliquet tempus at a nulla. Donec eleifend ultricies nulla, at gravida ipsum imperdiet at. In hac habitasse platea dictumst. Morbi feugiat tristique porta. Duis maximus nisl vitae ligula tincidunt, non varius sapien aliquam. Morbi dictum vulputate consequat.',
+      position: 'Teacher',
+      company: 'Pasadena Tech Pre-School',
+      city: 'Jupiter, FL',
+      from: '08/23/2022',
+      to: '09/08/2022',
+      university: 'Oxford University',
+      uniCity: 'Cambridge, GBR',
+      degree: 'Quantum Physics',
+      uniFrom: '06/27/2012',
+      uniTo: '11/01/2018',
   }
 
   const [navigator, setNavigator] = useState("config");
@@ -50,8 +50,17 @@ function App() {
     photoDestination.src = photoURL;
   }
 
+  // React-to-Print
   const componentRef = useRef();
   const handlePrint = useReactToPrint({content: () => componentRef.current });
+
+  const showExampleCV = () => {
+    setData(examples);
+  }
+
+  const resetCV = () => {
+    setData({});
+  }
 
   return (
     <div className="App">
@@ -67,7 +76,14 @@ function App() {
             <li className="exp" onClick={navState}> Experience </li>
             <li className="edu" onClick={navState}> Education </li>
           </ul>
-          <DataEntry handleChange={handleChange} handlePhoto={handlePhoto} handlePrint={handlePrint} section={navigator} data={data} />
+          <DataEntry 
+            handleChange={handleChange} 
+            handlePhoto={handlePhoto} 
+            handlePrint={handlePrint} 
+            showExampleCV={showExampleCV}
+            resetCV={resetCV}
+            section={navigator} 
+            data={data} />
         </div>
         <Preview data={data} ref={componentRef} />
       </div>

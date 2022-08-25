@@ -57,9 +57,7 @@
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 40%;
+  height: 2rem;
 }
 
 .body {

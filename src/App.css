@@ -43,6 +43,8 @@
   }
 }
 
+/* App.js Settings */
+
 .App > header {
   background-color:rgb(41, 41, 41);
   margin: 0 0 2rem 0;
@@ -98,11 +100,15 @@ li a:hover {
   background-color: rgb(80, 80, 80)
 }
 
-.inputs > * {
+/* DataEntry settings */
+
+.form > * {
   display: block;
   padding: .3rem;
   margin: .5rem;
 }
+
+/* Preview.js settings */
 
 .preview {
   border-radius: var(--border-radius);
@@ -110,11 +116,20 @@ li a:hover {
 }
 
 
-.preview > h2 {
+.fullName {
   background-color: rgb(80, 80, 80);
-  margin: 0;
-  padding: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 10%;
+  padding-left: 2rem;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.fullName > h2 {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .dataFlex {
@@ -122,6 +137,10 @@ li a:hover {
   flex-flow: row nowrap;
   justify-content: space-between;
   height: calc(100% - 4rem);
+}
+
+.dataFlex * {
+  margin: .6rem;;
 }
 
 .dataFlex .left {

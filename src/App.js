@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Preview from './components/Preview';
 import DataEntry from './components/DataEntry';
 
@@ -15,20 +15,18 @@ function App() {
   }
 
   function handleChange(e) {
-    console.log(data);
-    const newData = data;
-    newData[e.target.id] = e.target.value;
-    console.log(data, newData)
-
-    const id = e.target.id;
-    const value = e.target.value;
-    setData({...data, id : { value } });
+    setData(data => ({
+      ...data,
+      [e.target.id] : e.target.value
+    }));
   }
 
-  // useEffect(() => {
-
-  // }, []
-  // );
+  function handlePhoto(e) {
+    const photoObject = document.getElementById('photo').files[0];
+    const photoDestination = document.getElementsByClassName('right')[0].getElementsByTagName('img')[0];
+    const photoURL = URL.createObjectURL(photoObject);
+    photoDestination.src = photoURL;
+  }
 
   return (
     <div className="App">
@@ -44,9 +42,9 @@ function App() {
             <li className="exp" onClick={navState}> Experience </li>
             <li className="edu" onClick={navState}> Education </li>
           </ul>
-          <DataEntry handleChange={handleChange} section={navigator}/>
+          <DataEntry handleChange={handleChange} handlePhoto={handlePhoto} section={navigator} data={data} />
         </div>
-        <Preview data={data}/>
+        <Preview data={data} />
       </div>
 
       <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>

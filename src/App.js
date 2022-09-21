@@ -1,139 +1,96 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Preview from './components/Preview';
-// import DataEntry from './components/DataEntry'
-// https://github.com/parallax/jsPDF
+import DataEntry from './components/DataEntry';
 
+import { useReactToPrint } from 'react-to-print';
 
-class App extends React.Component {
+function App() {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      navigator: "config",
-      data: {
-        info: {},
-        experience: {},
-        education: {},
-      },
-    };
-
-    this.examples = {
-      info: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        address: '',
-        phoneNum: '',
-        email: '',
-        description: '',
-      },
-      experience: {
-        position: '',
-        company: '',
-        city: '',
-        from: '',
-        to: '',
-      },
-      education: {
-        university: '',
-        city: '',
-        degree: '',
-        from: '',
-        to: '',
-      },
-
-    }
-
-    this.navState = this.navState.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+  const examples = {
+      firstName: 'Jack',
+      lastName: 'Pashayan',
+      title: 'Teacher',
+      address: '82 Ossipee St',
+      pnum: '123-456-7890',
+      email: 'usGov@google.com',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut faucibus semper libero ut ornare. Ut id mi viverra leo tristique blandit sed a sem. Fusce auctor velit non iaculis accumsan. Curabitur nec purus vel lorem aliquet tempus at a nulla. Donec eleifend ultricies nulla, at gravida ipsum imperdiet at. In hac habitasse platea dictumst. Morbi feugiat tristique porta. Duis maximus nisl vitae ligula tincidunt, non varius sapien aliquam. Morbi dictum vulputate consequat.',
+      position: 'Teacher',
+      company: 'Pasadena Tech Pre-School',
+      city: 'Jupiter, FL',
+      from: '08/23/2022',
+      to: '09/08/2022',
+      university: 'Oxford University',
+      uniCity: 'Cambridge, GBR',
+      degree: 'Quantum Physics',
+      uniFrom: '06/27/2012',
+      uniTo: '11/01/2018',
   }
 
-  // function for nav bar to change state and thus which inputs are rendered
-  navState(e) {
-    const nombre = e.target.parentElement.className;
-    const dataEntries = document.querySelectorAll('.inputs');
-    for (const dataEntry of dataEntries) {
-      dataEntry.setAttribute('hidden', true)
-    }
-    document.querySelector('.dataEntry').querySelector(`.${nombre}`).removeAttribute('hidden');
+  const [navigator, setNavigator] = useState("config");
+  const [data, setData] = useState({});
+
+  // Prop Functions
+
+  function navState(e) {
+    setNavigator(e.target.className)
   }
 
-  handleChange(e) {
-    const inputField = e.target;
-    this.setState((state, props) => {
-      state.data.info[inputField.id] = inputField.value;
-      return state;
-    })
+  function handleChange(e) {
+    setData(data => ({
+      ...data,
+      [e.target.id] : e.target.value
+    }));
   }
 
-  render() {
-    return (
-      <div className="App">
-        <header>
-          <h1>CV Builder</h1>
-        </header>
+  function handlePhoto(e) {
+    const photoObject = document.getElementById('photo').files[0];
+    const photoDestination = document.getElementsByClassName('right')[0].getElementsByTagName('img')[0];
+    const photoURL = URL.createObjectURL(photoObject);
+    photoDestination.src = photoURL;
+  }
 
-        <div className="body">
-          <div className="editor">
-            <ul className='nav'>
-              <li className="config"> <a onClick={this.navState}>Config/Publish</a> </li>
-              <li className="info"> <a onClick={this.navState}>Personal Information</a> </li>
-              <li className="exp"> <a onClick={this.navState}>Experience</a> </li>
-              <li className="edu"> <a onClick={this.navState}>Education</a> </li>
-            </ul>
+  // React-to-Print
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({content: () => componentRef.current });
 
-            <div className="dataEntry">
-              <div className="inputs config">
-                <h3>Instructions</h3>
-                <br />
-                <p>Welcome to my CV/Resume builder! Your job is to fill in the things that you want people to know about you, and my job is to make it look great. Sound like a plan?</p>
-                <br /><br />
-                <p>You have 3 tabs to share some <strong>personal info</strong> about yourself, talk about your <strong>work expereince</strong>, and then <strong>where you went to school</strong></p>
-                <br /><br />
-                <div className="publish">
-                  <h3>Publish</h3>
-                  <button>Generate PDF</button>
-                  <button>Show Example CV</button>
-                  <button>Reset Current</button>
-                </div>
-              </div>
-              <div className="inputs info" hidden>
-                <h3>Personal Information</h3>
-                <input type="text" placeholder="First Name" id='firstName' onChange={this.handleChange}/>
-                <input type="text" placeholder="Last Name" />
-                <label htmlFor="photo">Photo</label>
-                <input type="file" id='photo' />
-                <input type="text" placeholder="Address" />
-                <input type="text" placeholder="Phone Number" />
-                <input type="text" placeholder="Email" />
-                <textarea placeholder="Description" />
-              </div>
-              <div className="inputs exp" hidden>
-                <h3>Experience</h3>
-                <input type="text" placeholder="Position" />
-                <input type="text" placeholder="Company" />
-                <input type="text" placeholder="City" />
-                <input type="date" placeholder="From" />
-                <input type="date" placeholder="To" />
-              </div>
-              <div className="inputs edu" hidden>
-                <h3>Education</h3>
-                <input type="text" placeholder="University" />
-                <input type="text" placeholder="City" />
-                <input type="text" placeholder="Degree" />
-                <input type="date" placeholder="From" />
-                <input type="date" placeholder="To" />
-              </div>
-            </div>
-          </div>
-          <Preview data={this.state.data}/>
+  const showExampleCV = () => {
+    setData(examples);
+  }
+
+  const resetCV = () => {
+    setData({});
+  }
+
+  return (
+    <div className="App">
+      <header>
+        <h1>CV Builder</h1>
+      </header>
+
+      <div className="body">
+        <div className="editor">
+          <ul className='nav'>
+            <li className="config" onClick={navState}> Config/Publish </li>
+            <li className="info" onClick={navState}> Personal Information </li>
+            <li className="exp" onClick={navState}> Experience </li>
+            <li className="edu" onClick={navState}> Education </li>
+          </ul>
+          <DataEntry 
+            handleChange={handleChange} 
+            handlePhoto={handlePhoto} 
+            handlePrint={handlePrint} 
+            showExampleCV={showExampleCV}
+            resetCV={resetCV}
+            section={navigator} 
+            data={data} />
         </div>
-
-        <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>
+        <Preview data={data} ref={componentRef} />
       </div>
-    );
-  }
+
+      <footer>Copyright &#64; 2022 jackberrypassionfruit</footer>
+    </div>
+  );
 }
 
 export default App;
